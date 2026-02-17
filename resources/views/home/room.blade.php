@@ -1,12 +1,4 @@
-     <style>
-         td {
-            white-space: normal; /* allow multiple lines */
-            overflow: visible;
-            text-overflow: unset;
-            }
-      </style>
-
-
+    @include('home.script')
      <div  class="our_room">
          <div class="container">
             <div class="row">
@@ -17,7 +9,6 @@
                   </div>
                </div>
             </div>
-
 
 <div class="row">
     @foreach ($room as $rooms)
@@ -36,13 +27,16 @@
                         $shortText = Str::limit($fullText, 70);
                     @endphp
 
-                    <p>
+                    <p style="padding: 10px;">
                         <span class="short-text">{{ $shortText }}</span>
                         <span class="full-text" style="display:none;">{{ $fullText }}</span>
                         @if(strlen($fullText) > 70)
                             <a href="#" class="toggle-text">See More</a>
                         @endif
                     </p>
+
+                    <a class="btn btn-warning" href="{{ url('room_details',$rooms->id) }}">Room Details</a>
+
                 </div>
             </div>
         </div>

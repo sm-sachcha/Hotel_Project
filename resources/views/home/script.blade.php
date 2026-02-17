@@ -18,3 +18,11 @@
         });
     });
 </script>
+
+ <style>
+         td {
+            white-space: normal; /* allow multiple lines */
+            overflow: visible;
+            text-overflow: unset;
+            }
+      </style>
