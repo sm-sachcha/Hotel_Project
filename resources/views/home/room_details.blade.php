@@ -42,17 +42,46 @@
                             </div>
                         </div>
                     </div>
-            </div>
 
-            <!-- JS for toggle -->
-            @include('home.script')
+                <div class="col-md-4">
+                    <div class="booking-glass light">
+                        <h4 class="box-title">Book a Room</h4>
 
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control glass-input">
+                        </div>
 
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control glass-input">
+                        </div>
 
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" name="phone" class="form-control glass-input">
+                        </div>
 
+                        <div class="form-group">
+                            <label>Arrival Date</label>
+                            <input type="date" name="arrivalDate" class="form-control glass-input" id="arrivalDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Leaving Date</label>
+                            <input type="date" name="leavingDate" class="form-control glass-input" id="leavingdate">
+                        </div>
+
+                        <button type="submit" class="btn book-btn">
+                            Book Room
+                        </button>
                     </div>
                 </div>
-                
+            </div>
+            <!-- JS for toggle -->
+            @include('home.script')
+            </div>
+        </div>  
                 @include("home.footer")
                 <!-- end footer -->
                 <!-- Javascript files-->
@@ -62,5 +91,25 @@
                 <!-- sidebar -->
                 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
                 <script src="js/custom.js"></script>
+
+               <script type="text/javascript">
+
+                $(function() 
+                {
+                    var dtToday = new Date();
+                    var month = dtToday.getMonth() + 1;
+                    var day = dtToday.getDate();
+                    var year = dtToday.getFullYear();
+                    if(month < 10)
+                        month = '0' + month.toString();
+                    if(day < 10)                        day = '0' + day.toString();
+                    var maxDate = year + '-' + month + '-' + day;
+                    $('#arrivalDate').attr('min', maxDate);
+                    $('#leavingDate').attr('min', maxDate);
+                });
+               </script>
+
+
+
             </body>
             </html>
