@@ -19,6 +19,8 @@
         <th>Wifi</th>
         <th>Room Type</th>
         <th>Image</th>
+        <th>Action</th>
+        <!-- <th>Delete</th> -->
     </tr>
 
     @foreach ($data as $data)
@@ -29,14 +31,26 @@
         <td>{{$data->wifi}}</td>
         <td>{{$data->room_type}}</td>
         <td><img width="60" src="room/{{ $data->image }}"></td>
+
+        <td class="text-center">
+            <div class="button-group">
+                <a href="{{ url('delete_room', $data->id) }}"
+                class="btn btn-danger btn-sm"
+                title="Delete"
+                onclick="return confirm('Are you sure to delete it?');">
+                    <i class="bi bi-trash"></i>
+                </a>
+
+                <a href="{{ url('update_room', $data->id) }}"
+                class="btn btn-warning btn-sm"
+                title="Edit">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+            </div>
+        </td>
     </tr>
     @endforeach
-
-
 </table>
-
-
-
             </div>
             </div>
         </div>

@@ -150,4 +150,12 @@ table {
         border-radius: 5px;
     }
 
+    .button-group {
+        display: inline-flex;
+        gap: 5px;
+    }
+
+
+    
+
   </style>
