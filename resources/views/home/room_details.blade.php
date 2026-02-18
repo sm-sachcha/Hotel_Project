@@ -56,34 +56,46 @@
                 @endforeach
             @endif
 
-            <form action="{{ url('/add_booking/'.$room->id) }}" method="POST">
-                @csrf
-                <div class="form-group mb-2">
-                    <label>Name</label>
-                    <input type="text" name="name" class="form-control glass-input">
-                </div>
-                <div class="form-group mb-2">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control glass-input">
-                </div>
-                <div class="form-group mb-2">
-                    <label>Phone</label>
-                    <input type="number" name="phone" class="form-control glass-input">
-                </div>
-                <div class="form-group mb-2">
-                    <label>Arrival Date</label>
-                    <input type="date" name="arrivalDate" class="form-control glass-input" id="arrivalDate">
-                </div>
-                <div class="form-group mb-2">
-                    <label>Leaving Date</label>
-                    <input type="date" name="leavingDate" class="form-control glass-input" id="leavingDate">
-                </div>
 
-                <button type="submit" class="btn book-btn mt-2">Book Room</button>
-            </form>
-        </div>
+
+
+<form action="{{ url('/add_booking/'.$room->id) }}" method="POST">
+    @csrf
+
+    <div class="form-group mb-2">
+        <label>Name</label>
+        <input type="text" name="name"
+            value="{{ Auth::id() ? Auth::user()->name : '' }}"
+            class="form-control glass-input">
     </div>
-</div>
+
+    <div class="form-group mb-2">
+        <label>Email</label>
+        <input type="email" name="email"
+            value="{{ Auth::id() ? Auth::user()->email : '' }}"
+            class="form-control glass-input">
+    </div>
+
+    <div class="form-group mb-2">
+        <label>Phone</label>
+        <input type="number" name="phone"
+            value="{{ Auth::id() ? Auth::user()->phone : '' }}"
+            class="form-control glass-input">
+    </div>
+
+    <div class="form-group mb-2">
+        <label>Arrival Date</label>
+        <input type="date" name="arrivalDate" class="form-control glass-input" id="arrivalDate">
+    </div>
+
+    <div class="form-group mb-2">
+        <label>Leaving Date</label>
+        <input type="date" name="leavingDate" class="form-control glass-input" id="leavingDate">
+    </div>
+
+    <button type="submit" class="btn book-btn mt-2">Book Room</button>
+</form>
+
 
   
   
