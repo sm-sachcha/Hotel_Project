@@ -35,6 +35,6 @@ class HomeController extends Controller
         $data->leaving_date = $request->leavingDate;
         $data->save();
 
-        return redirect()->back()->with('success', 'Room booked successfully!');
+        return redirect()->back()->with('message', 'Room booked successfully!');
     }
 }
