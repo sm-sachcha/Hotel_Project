@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    @include("home.css")
+   <head>
+    @include('home.css')
+   </head>
    <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
@@ -10,30 +11,29 @@
       </div>
       <!-- end loader -->
       <!-- header -->
-      
-      @include("home.header")
+      @include('home.header')
       <!-- end header inner -->
       <!-- end header -->
       <!-- banner -->
-      @include("home.slider")
+      @include('home.slider')
       <!-- end banner -->
       <!-- about -->
-      @include("home.about")
+      @include('home.about')
       <!-- end about -->
       <!-- our_room -->
-      @include("home.room")
+      @include('home.room')
       <!-- end our_room -->
       <!-- gallery -->
-      @include("home.gallery")
+      @include('home.gallery')
       <!-- end gallery -->
       <!-- blog -->
-      @include("home.blog")
+      @include('home.blog')
       <!-- end blog -->
       <!--  contact -->
-      @include("home.contact")
+      @include('home.contact')
       <!-- end contact -->
       <!--  footer -->
-      @include("home.footer")
+      @include('home.footer')
       <!-- end footer -->
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>

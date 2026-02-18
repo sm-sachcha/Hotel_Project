@@ -1,4 +1,37 @@
       <header>
+
+      <!-- <style>
+.btn-gradient {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* Dropdown item icons */
+.dropdown-item i {
+    min-width: 20px;
+}
+
+
+      </style> -->
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
          <!-- header inner -->
          <div class="header">
             <div class="container">
@@ -40,33 +73,63 @@
                                  <a class="nav-link" href="contact.html">Contact Us</a>
                               </li>
 
-                              
 
-                              
 
-                              
 
-                              @if (Route::has('login'))
-                    @auth
+<nav style="margin-bottom: 45px;" class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <ul class="navbar-nav ms-auto">
 
-                    <x-app-layout>
+        @if (Route::has('login'))
+            @auth
+                <li class="nav-item dropdown">
+                    <!-- Simple Text with Border -->
+                    <span style="border: 1px solid #000; padding: 5px 10px; cursor: pointer; border-radius: 5px;"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                        Account
+                    </span>
 
-                    </x-app-layout>
-                        
-                    @else
-                        <li class="nav-item" style="padding-right: 10px">
-                                 <a class="btn btn-success" href="{{ url('login') }}">Login</a>
-                              </li>
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" style="min-width: 180px;">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            @else
+                <li class="nav-item me-2">
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
 
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                 <a class="btn btn-secondary" href="{{ url('register') }}">Register</a>
-                              </li>
-                        @endif
-                    @endauth
-            @endif
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a href="{{ route('register') }}">Register</a>
+                    </li>
+                @endif
+            @endauth
+        @endif
 
-                              </ul>
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+
                            </div>
 
                         </div>
