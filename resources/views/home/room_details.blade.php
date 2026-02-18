@@ -47,6 +47,19 @@
                     <div class="booking-glass light">
                         <h4 class="box-title">Book a Room</h4>
 
+
+                        @if ($errors)
+                        @foreach ($errors->all() as $errors)
+                        <li style="color: red;">
+                            {{ $errors }}
+                        </li>
+                        @endforeach
+                        @endif
+
+
+                        <form action="{{ url('/add_booking/'.$room->id) }}" method="POST">
+                        @csrf
+
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control glass-input">
@@ -69,14 +82,13 @@
 
                         <div class="form-group">
                             <label>Leaving Date</label>
-                            <input type="date" name="leavingDate" class="form-control glass-input" id="leavingdate">
+                            <input type="date" name="leavingDate" class="form-control glass-input" id="leavingDate">
                         </div>
 
-                        <button type="submit" class="btn book-btn">
-                            Book Room
-                        </button>
+                        <button type="submit" class="btn book-btn">Book Room</button>
                     </div>
                 </div>
+            </form>
             </div>
             <!-- JS for toggle -->
             @include('home.script')
@@ -108,7 +120,6 @@
                     $('#leavingDate').attr('min', maxDate);
                 });
                </script>
-
 
 
             </body>
