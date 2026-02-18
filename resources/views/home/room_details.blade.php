@@ -47,7 +47,7 @@
     <div id="serv_hover" class="room flex-fill h-100">
         <div style="padding: 20px;" class="room_img">
             <figure>
-                <img style="height: 100%; width: 100%; object-fit: cover;" 
+                <img style="height: 290px; width: 500px; object-fit: cover;" 
                      src="/room/{{ $room->image }}" alt="#"/>
             </figure>
         </div>
@@ -62,7 +62,7 @@
 </div>
 
 <!-- Booking Form -->
-<div class="col-md-4 d-flex">
+<div class="col-md-5 d-flex">
     <div class="booking-glass light flex-fill h-100 overflow-auto" style="max-height: 100%;">
         <h4 class="box-title">Book a Room</h4>
 
