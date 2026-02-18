@@ -23,73 +23,71 @@
                   </div>
                </div>
             </div>
-            <div class="row">
-                
-                    <div class="col-md-7">
-                        <div id="serv_hover" class="room">
-                            <div style="padding: 20px;" class="room_img">
-                                <figure>
-                                    <img style="height: 300px; width: 800px;" src="/room/{{ $room->image }}" alt="#"/>
-                                </figure>
-                            </div>
-                            <div class="bed_room">
-                                <h2>{{ $room ->room_title }}</h2>
-                                <p style="padding: 12px">{{ $room->description }}</p>
-                                <h4 style="padding: 12px"> Free Wifi: {{ $room ->wifi }}</h4>
-                                <h4 style="padding: 12px"> Room Type: {{ $room ->room_type }}</h4>
-                                <h3 style="padding: 12px"> Price: {{ $room ->price }}</h3>
-
-                            </div>
-                        </div>
-                    </div>
-
-                <div class="col-md-4">
-                    <div class="booking-glass light">
-                        <h4 class="box-title">Book a Room</h4>
-
-
-                        @if ($errors)
-                        @foreach ($errors->all() as $errors)
-                        <li style="color: red;">
-                            {{ $errors }}
-                        </li>
-                        @endforeach
-                        @endif
-
-
-                        <form action="{{ url('/add_booking/'.$room->id) }}" method="POST">
-                        @csrf
-
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control glass-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control glass-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="number" name="phone" class="form-control glass-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Arrival Date</label>
-                            <input type="date" name="arrivalDate" class="form-control glass-input" id="arrivalDate">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Leaving Date</label>
-                            <input type="date" name="leavingDate" class="form-control glass-input" id="leavingDate">
-                        </div>
-
-                        <button type="submit" class="btn book-btn">Book Room</button>
-                    </div>
-                </div>
-            </form>
+  
+  
+  
+  <div class="row d-flex">
+    <!-- Room Info -->
+    <div class="col-md-7 d-flex">
+        <div id="serv_hover" class="room flex-fill h-100">
+            <div style="padding: 20px;" class="room_img">
+                <figure>
+                    <img style="height: 100%; width: 100%; object-fit: cover;" src="/room/{{ $room->image }}" alt="#"/>
+                </figure>
             </div>
+            <div class="bed_room">
+                <h2>{{ $room->room_title }}</h2>
+                <p style="padding: 12px">{{ $room->description }}</p>
+                <h4 style="padding: 12px">Free Wifi: {{ $room->wifi }}</h4>
+                <h4 style="padding: 12px">Room Type: {{ $room->room_type }}</h4>
+                <h3 style="padding: 12px">Price: {{ $room->price }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="col-md-4 d-flex">
+        <div class="booking-glass light flex-fill h-100 overflow-auto" style="max-height: 100%;">
+            <h4 class="box-title">Book a Room</h4>
+
+            @if ($errors)
+                @foreach ($errors->all() as $errors)
+                    <li style="color: red;">{{ $errors }}</li>
+                @endforeach
+            @endif
+
+            <form action="{{ url('/add_booking/'.$room->id) }}" method="POST">
+                @csrf
+                <div class="form-group mb-2">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control glass-input">
+                </div>
+                <div class="form-group mb-2">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control glass-input">
+                </div>
+                <div class="form-group mb-2">
+                    <label>Phone</label>
+                    <input type="number" name="phone" class="form-control glass-input">
+                </div>
+                <div class="form-group mb-2">
+                    <label>Arrival Date</label>
+                    <input type="date" name="arrivalDate" class="form-control glass-input" id="arrivalDate">
+                </div>
+                <div class="form-group mb-2">
+                    <label>Leaving Date</label>
+                    <input type="date" name="leavingDate" class="form-control glass-input" id="leavingDate">
+                </div>
+
+                <button type="submit" class="btn book-btn mt-2">Book Room</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+  
+  
+  
             <!-- JS for toggle -->
             @include('home.script')
             </div>

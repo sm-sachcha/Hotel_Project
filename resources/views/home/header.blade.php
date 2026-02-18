@@ -1,141 +1,139 @@
-      <header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Management</title>
 
-      <!-- <style>
-.btn-gradient {
-    background: linear-gradient(45deg, #4facfe, #00f2fe);
-    color: white;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    border: none;
-}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-.btn-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    color: white;
-}
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-/* Dropdown item icons */
-.dropdown-item i {
-    min-width: 20px;
-}
+    <style>
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin-right: 15px;
+        }
 
+        .navbar-nav .nav-link:hover {
+            color: red !important;
+        }
 
-      </style> -->
+        .logo img {
+            height: 55px;
+        }
+    </style>
+</head>
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap JS Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<body>
 
+<header>
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        <div class="container">
 
-         <!-- header inner -->
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                                <a href="{{url('/')}}"> <img src="{{ asset('images/Logo.png') }}" alt="Logo"></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                           <div class="collapse navbar-collapse" id="navbarsExample04">
-                              <ul class="navbar-nav mr-auto">
+            <!-- Logo -->
+            <a class="navbar-brand logo" href="{{ url('/') }}">
+                <img src="{{ asset('images/Logo.png') }}" alt="Logo">
+            </a>
 
-                                 <li class="nav-item active">
-                                 <a class="nav-link" href="/">Home</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="about.html">About</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="room.html">Our room</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="gallery.html">Gallery</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="blog.html">Blog</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="contact.html">Contact Us</a>
-                              </li>
+            <!-- Toggle Button -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
 
-
-
-<nav style="margin-bottom: 45px;" class="navbar navbar-expand-lg navbar-light bg-light px-3">
-    <ul class="navbar-nav ms-auto">
-
-        @if (Route::has('login'))
-            @auth
-                <li class="nav-item dropdown">
-                    <!-- Simple Text with Border -->
-                    <span style="border: 1px solid #000; padding: 5px 10px; cursor: pointer; border-radius: 5px;"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                        Account
-                    </span>
-
-                    <!-- Dropdown Menu -->
-                    <ul class="dropdown-menu dropdown-menu-end" style="min-width: 180px;">
-                        <li>
-                            <a class="dropdown-item" href="{{ url('/dashboard') }}">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="dropdown-item text-danger">
-                                    Logout
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            @else
-                <li class="nav-item me-2">
-                    <a href="{{ route('login') }}">Login</a>
-                </li>
-
-                @if (Route::has('register'))
+                <!-- Left Side Menu -->
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a href="{{ route('register') }}">Register</a>
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
-                @endif
-            @endauth
-        @endif
 
-    </ul>
-</nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/about.html') }}">About</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/room') }}">Our Room</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/gallery') }}">Gallery</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+                    </li>
+                </ul>
 
+                <!-- Right Side Auth Section -->
+                <ul class="navbar-nav ms-auto">
 
+                    @if (Route::has('login'))
 
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle btn btn-outline-dark px-3"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown">
+                                    Account
+                                </a>
 
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                            <i class="bi bi-speedometer2"></i> Dashboard
+                                        </a>
+                                    </li>
 
-                           </div>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="bi bi-box-arrow-right"></i> Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
 
-                        </div>
-                     </nav>
-                  </div>
-               </div>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-primary" href="{{ route('login') }}">
+                                    Login
+                                </a>
+                            </li>
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="btn btn-warning" href="{{ route('register') }}">
+                                        Register
+                                    </a>
+                                </li>
+                            @endif
+
+                        @endauth
+
+                    @endif
+
+                </ul>
             </div>
-         </div>
-      </header>
+        </div>
+    </nav>
+</header>
+
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
