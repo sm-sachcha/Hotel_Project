@@ -17,4 +17,9 @@ class Booking extends Model
         'arrival_date',
         'leaving_date',
     ];
+
+    public function room()
+    {
+        return $this->hasOne(('App\Models\Room'), 'id', 'room_id');
+    }
 }

@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <base href="/public">
 @include("home.css")
+
+<style>
+/* 🔥 REMOVE HEADER TO SECTION GAP */
+header{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.our_room{
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+}
+
+.container{
+    padding-top: 0 !important;
+}
+
+.row{
+    margin-top: 0 !important;
+}
+
+/* Optional: remove loader space */
+.loader_bg{
+    margin-bottom: 0 !important;
+}
+</style>
+
+</head>
 
 <body class="main-layout">
 
 <!-- loader -->
 <div class="loader_bg">
-   <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+   <div class="loader">
+      <img src="images/loading.gif" alt="#"/>
+   </div>
 </div>
 
 @include("home.header")
@@ -29,13 +60,15 @@
 </div>
 @endif
 
+
+<!-- ================= OUR ROOM SECTION ================= -->
 <div class="our_room">
    <div class="container">
       <div class="row">
          <div class="col-md-12">
             <div class="titlepage">
                <h2>Our Room</h2>
-               <p>Lorem Ipsum available, but the majority have suffered </p>
+               <p>Lorem Ipsum available, but the majority have suffered</p>
             </div>
          </div>
       </div>
@@ -63,7 +96,7 @@
 
 <!-- Booking Form -->
 <div class="col-md-5 d-flex">
-    <div class="booking-glass light flex-fill h-100 overflow-auto" style="max-height: 100%;">
+    <div class="booking-glass light flex-fill h-100 overflow-auto">
         <h4 class="box-title">Book a Room</h4>
 
         <!-- Error Messages -->
@@ -122,7 +155,6 @@
 <!-- JS -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.0.0.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="js/custom.js"></script>
 
@@ -137,21 +169,21 @@ $(function() {
     if(month < 10) month = '0' + month;
     if(day < 10) day = '0' + day;
 
-    var maxDate = year + '-' + month + '-' + day;
+    var today = year + '-' + month + '-' + day;
 
-    $('#arrivalDate').attr('min', maxDate);
-    $('#leavingDate').attr('min', maxDate);
+    $('#arrivalDate').attr('min', today);
+    $('#leavingDate').attr('min', today);
 });
 </script>
 
-<!--Auto Hide Success Message -->
+<!-- Auto Hide Success Message -->
 <script>
 setTimeout(function(){
     var message = document.getElementById('successMessage');
     if(message){
         message.style.display = 'none';
     }
-}, 10000);
+}, 5000);
 </script>
 
 </body>
