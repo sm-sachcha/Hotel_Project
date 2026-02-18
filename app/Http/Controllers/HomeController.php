@@ -31,10 +31,32 @@ class HomeController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->arrival_date = $request->arrivalDate;
-        $data->leaving_date = $request->leavingDate;
-        $data->save();
 
-        return redirect()->back()->with('message', 'Room booked successfully!');
+        $arrivalDate = $request->arrivalDate;
+        $leavingDate = $request->leavingDate;
+
+
+        $isBooked = Booking::where('room_id', $id)
+        ->where('arrival_date', '<=', $leavingDate)
+        ->where('leaving_date', '>=', $arrivalDate)
+        ->exists();
+
+        if ($isBooked)
+            {
+                return redirect()->back()->with('message', 'Sorry, this room is already booked for the selected dates. Please choose different dates.');    
+            }
+
+            else
+                {
+                    $data->arrival_date = $request->arrivalDate;
+                    $data->leaving_date = $request->leavingDate;
+                    $data->save();
+                    return redirect()->back()->with('message', 'Room booked successfully!');
+                }
+
+
+
+
+
     }
 }

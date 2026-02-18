@@ -151,7 +151,7 @@ setTimeout(function(){
     if(message){
         message.style.display = 'none';
     }
-}, 4000);
+}, 10000);
 </script>
 
 </body>
