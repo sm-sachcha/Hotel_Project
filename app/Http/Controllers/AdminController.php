@@ -112,4 +112,32 @@ class AdminController extends Controller
         return view('admin.bookings', compact('data'));
     }
 
+    public function delete_booking($id)
+    {
+        $data = Booking::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
+
+    public function approve_book($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->status = 'Approved';
+        $booking->save();
+
+        return redirect()->back()->with('message', 'Booking Approved Successfully');
+    }
+
+    public function reject_book($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->status = 'Rejected';
+        $booking->save();
+
+        return redirect()->back()->with('message', 'Booking Rejected Successfully');
+    }
+
+
 }
+

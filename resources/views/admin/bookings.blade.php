@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+<head>
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,6 +19,7 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     max-width: 1300px;
     margin: 40px auto;
+    overflow-x: auto;   /* Responsive scroll */
 }
 
 /* Table Title */
@@ -30,14 +32,16 @@ body {
     letter-spacing: 1px;
 }
 
-/* Table Styles */
+/* Table */
 .custom-table {
     width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
     border-radius: 12px;
+    table-layout: auto;
+    min-width: 1100px; /* Prevent collapse */
 }
 
+/* Header */
 .custom-table thead {
     background: linear-gradient(90deg, #00b894, #00d084);
 }
@@ -47,12 +51,16 @@ body {
     text-align: center;
     font-weight: 600;
     color: #fff;
+    white-space: nowrap;
 }
 
+/* Table Cells */
 .custom-table td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #444;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 /* Row Hover */
@@ -64,18 +72,36 @@ body {
     background-color: #333;
 }
 
-/* Action Buttons Container */
-.action-buttons {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    gap: 5px; /* Space between buttons */
+/* Status Styling */
+.status-approved {
+    color: #00d084;
+    font-weight: 600;
 }
 
-/* Buttons - small, attractive, pill style */
+.status-rejected {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.status-pending {
+    color: #f1c40f;
+    font-weight: 600;
+}
+
+/* Buttons Container */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+/* Base Button */
 .action-btn {
     padding: 5px 12px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -83,7 +109,7 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Accept Button */
+/* Accept */
 .accept-btn {
     background: #00b894;
     color: white;
@@ -94,7 +120,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 184, 148, 0.5);
 }
 
-/* Reject Button */
+/* Reject */
 .reject-btn {
     background: #e74c3c;
     color: white;
@@ -105,6 +131,16 @@ body {
     box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
 }
 
+/* Delete */
+.delete-btn {
+    background: #ff7675;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #d63031;
+}
+
 /* Room Image */
 .custom-table td img {
     width: 80px;
@@ -113,10 +149,12 @@ body {
     border-radius: 8px;
 }
 </style>
+</head>
 
 @include('admin.css')
 
 <body>
+
 @include('admin.header')
 @include('admin.sidebar')
 
@@ -138,38 +176,65 @@ body {
                             <th>Arrival Date</th>
                             <th>Departure Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                             <th>Image</th>
+                            <th>Action</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($data as $booking)
+                        @foreach ($data as $data)
                         <tr>
-                            <td>{{ $booking->room->room_title }}</td>
-                            <td>{{ $booking->name }}</td>
-                            <td>{{ $booking->email }}</td>
-                            <td>{{ $booking->phone }}</td>
-                            <td>{{ $booking->room->price }}</td>
-                            <td>{{ $booking->arrival_date }}</td>
-                            <td>{{ $booking->leaving_date }}</td>
-                            <td>{{ $booking->status }}</td>
+                            <td>{{ $data->room->room_title }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->phone }}</td>
+                            <td>${{ $data->room->price }}</td>
+                            <td>{{ $data->arrival_date }}</td>
+                            <td>{{ $data->leaving_date }}</td>
+
+                        
+                            <!-- Image -->
+                            <td>
+                                <img src="/room/{{ $data->room->image }}" alt="Room Image">
+                            </td>
+
+                            <!-- Status -->
+                            <td>
+                                @if($data->status == 'Approved')
+                                    <span class="status-approved">Approved</span>
+                                @elseif($data->status == 'Rejected')
+                                    <span class="status-rejected">Rejected</span>
+                                @else
+                                    <span class="status-pending">Pending</span>
+                                @endif
+                            </td>
+
+                            <!-- Accept / Reject -->
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ url('accept_booking/'.$booking->id) }}">
-                                        <button class="action-btn accept-btn">✔ Accept</button>
+                                   <a href="{{ url('approve_book/'.$data->id) }}"
+                                      onclick="return confirm('Are you sure you want to Approve this booking?')">
+                                        <button class="action-btn accept-btn">✔ Approve</button>
                                     </a>
-                                    <a href="{{ url('reject_booking/'.$booking->id) }}">
-                                        <button class="action-btn reject-btn">✖ Reject</button>
+                                    <a href="{{ url('reject_book/'.$data->id) }}"
+                                       onclick="return confirm('Are you sure you want to Reject this booking?')">
+                                        <button class="action-btn reject-btn">✖ Rejected</button>
                                     </a>
                                 </div>
                             </td>
+
+                            <!-- Delete -->
                             <td>
-                                <img src="/room/{{ $booking->room->image }}" alt="Room Image">
+                                <a href="{{ url('delete_booking/'.$data->id) }}"
+                                   onclick="return confirm('Are you sure you want to delete this booking?')">
+                                    <button class="action-btn delete-btn">Delete</button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
 
@@ -180,5 +245,4 @@ body {
 @include('admin.footer')
 
 </body>
-
 </html>
