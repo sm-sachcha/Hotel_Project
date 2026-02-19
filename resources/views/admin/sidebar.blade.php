@@ -19,5 +19,6 @@
                   </ul>
                 </li>
                 <li><a href="{{ url('bookings') }}"> <i class="bi bi-book"></i>Bookings</a></li>
+                 <li><a href="{{ url('view_gallery') }}"> <i class="bi bi-images"></i>Gallery</a></li>
         </ul>
       </nav>

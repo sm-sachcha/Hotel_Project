@@ -34,5 +34,8 @@ Route::get('/approve_book/{id}', [AdminController::class, 'approve_book']);
 
 Route::get('/reject_book/{id}', [AdminController::class, 'reject_book']);
 
+Route::get('/view_gallery', [AdminController::class, 'view_gallery']);
 
+Route::post('/upload_gallery', [AdminController::class, 'upload_gallery']);
 
+Route::get('/delete_gallery/{id}', [AdminController::class, 'delete_gallery']);
