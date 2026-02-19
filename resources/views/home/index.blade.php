@@ -27,7 +27,6 @@
       <!-- blog -->
       @include('home.blog')
       <!-- end blog -->
-
       @include('home.about')
       <!--  contact -->
       @include('home.contact')
