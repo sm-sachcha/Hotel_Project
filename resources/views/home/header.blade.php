@@ -54,11 +54,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/about.html') }}">About</a>
+                        <a class="nav-link" href="{{ url('/hotel_about') }}">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/room') }}">Our Room</a>
+                        <a class="nav-link" href="{{ url('/our_rooms') }}">Our Room</a>
                     </li>
 
                     <li class="nav-item">

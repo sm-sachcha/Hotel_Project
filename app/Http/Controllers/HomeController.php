@@ -75,6 +75,16 @@ class HomeController extends Controller
 
     }
 
+    public function our_rooms(Request $request)
+    {
+        $room = Room::all();
+        return view('home.our_rooms', compact('room'));
+    }
+
+    public function hotel_about(Request $request)
+    {
+        return view('home.hotel_about');
+    }
 
     
 }

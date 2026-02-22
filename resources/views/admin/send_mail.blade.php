@@ -21,6 +21,7 @@
 
                     <form action="{{ url('mail', $data->id) }}" method="POST">
                         @csrf
+
                         <input type="text" name="greeting" placeholder="Greeting" required>
                         <input type="text" name="body" placeholder="Body" required>
                         <input type="text" name="action_text" placeholder="Action Text">
