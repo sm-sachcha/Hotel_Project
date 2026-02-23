@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\Contact;
+use App\Models\Gallery;
 
 class HomeController extends Controller
 {
@@ -94,6 +95,12 @@ class HomeController extends Controller
     public function hotel_contact(Request $request)
     {
         return view('home.hotel_contact');
+    }
+
+        public function hotel_gallary()
+    {
+        $gallery = Gallery::all();
+        return view('home.hotel_gallary', compact('gallery'));
     }
 
     

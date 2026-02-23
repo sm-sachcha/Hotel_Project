@@ -198,11 +198,20 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Mail Sent Successfully');
     }
 
-    public function hotel_gallary()
-    {
-        $gallery = Gallery::all();
-        return view('home.hotel_gallary', compact('gallery'));
-    }
+    // public function search(Request $request)
+    // {
+    //     $query = $request->search;
+
+    //     $data = DB::table('rooms')
+    //         ->join('users', 'rooms.user_id', '=', 'users.id')
+    //         ->select('rooms.room_title', 'rooms.price', 'users.usertype')
+    //         ->where('rooms.room_title', 'LIKE', "%{$query}%")
+    //         ->orWhere('rooms.price', 'LIKE', "%{$query}%")
+    //         ->orWhere('users.usertype', 'LIKE', "%{$query}%")
+    //         ->get();
+
+    //     return response()->json($data);
+    // }
 
 
 
