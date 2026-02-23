@@ -62,15 +62,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/gallery') }}">Gallery</a>
+                        <a class="nav-link" href="{{ url('/hotel_gallary') }}">Gallery</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
+                        <a class="nav-link" href="{{ url('/hotel_blog') }}">Blog</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+                        <a class="nav-link" href="{{ url('/hotel_contact') }}">Contact Us</a>
                     </li>
                 </ul>
 

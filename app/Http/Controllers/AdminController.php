@@ -198,6 +198,12 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Mail Sent Successfully');
     }
 
+    public function hotel_gallary()
+    {
+        $gallery = Gallery::all();
+        return view('home.hotel_gallary', compact('gallery'));
+    }
+
 
 
 

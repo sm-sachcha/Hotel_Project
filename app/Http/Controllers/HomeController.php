@@ -86,5 +86,15 @@ class HomeController extends Controller
         return view('home.hotel_about');
     }
 
+    public function hotel_blog(Request $request)
+    {
+        return view('home.hotel_blog');
+    }
+
+    public function hotel_contact(Request $request)
+    {
+        return view('home.hotel_contact');
+    }
+
     
 }
