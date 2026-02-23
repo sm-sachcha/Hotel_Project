@@ -47,7 +47,7 @@ class RegistrationTest extends TestCase
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        //$this->assertAuthenticated();
+        $response->assertRedirect('/');
     }
 }

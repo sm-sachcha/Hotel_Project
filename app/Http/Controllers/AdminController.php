@@ -14,6 +14,63 @@ use Notification;
 
 class AdminController extends Controller
 {
+
+    public function register_view()
+    {
+        return view('auth.register'); // your registration blade
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'usertype' => 'user', // ensure this column exists
+        ]);
+
+        Auth::login($user); // log in immediately
+
+        return redirect('/'); // redirect to home
+    }
+
+
+        public function login_view()
+    {
+        return view('auth.login'); // your login blade
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($request->only('email','password'))) {
+            $request->session()->regenerate();
+            return redirect('/'); // home page
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
     public function index()
     {
         if(Auth::id())
