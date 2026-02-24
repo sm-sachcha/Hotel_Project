@@ -12,24 +12,23 @@ class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function our_rooms_page_loads()
+
+    public function test_our_rooms_page_loads()
     {
         $response = $this->get('/our_rooms');
         $response->assertStatus(200);
         $response->assertViewIs('home.our_rooms');
     }
 
-    /** @test */
-    public function hotel_about_page_loads()
+
+    public function test_hotel_about_page_loads()
     {
         $response = $this->get('/hotel_about');
         $response->assertStatus(200);
         $response->assertViewIs('home.hotel_about');
     }
 
-    /** @test */
-    public function hotel_blog_page_loads()
+    public function test_hotel_blog_page_loads()
     {
         $response = $this->get('/hotel_blog');
         $response->assertStatus(200);
