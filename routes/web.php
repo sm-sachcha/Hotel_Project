@@ -24,7 +24,7 @@ route::get('/room_details/{id}', [HomeController::class,'room_details']);
 
 route::post('/add_booking/{id}', [HomeController::class,'add_booking']);
 
-route::get('/bookings', [AdminController::class,'bookings'])->middleware((['auth','admin']))->middleware((['auth','admin']));;
+route::get('/bookings', [AdminController::class,'bookings'])->middleware((['auth','admin']))->middleware((['auth','admin']));
 
 route::get('/delete_booking/{id}', [AdminController::class,'delete_booking'])->middleware((['auth','admin']));
 
@@ -42,7 +42,7 @@ Route::post('/contact', [HomeController::class, 'contact']);
 
 Route::get('/all_messages', [AdminController::class, 'all_messages'])->middleware((['auth','admin']));
 
-Route::get('send_mail/{id}', [AdminController::class,'send_mail'])->middleware((['auth','admin']));;
+Route::get('send_mail/{id}', [AdminController::class,'send_mail'])->middleware((['auth','admin']));
 
 Route::post('mail/{id}', [AdminController::class,'mail'])->middleware((['auth','admin']));
 
