@@ -57,3 +57,5 @@ route::get('/hotel_blog', [HomeController::class,'hotel_blog']);
 route::get('/hotel_contact', [HomeController::class,'hotel_contact']);
 
 route::get('/search', [AdminController::class,'search']);
+
+Route::get('/grpc-room/{id}', [App\Http\Controllers\RoomController::class, 'grpcRoom']);
