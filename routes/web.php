@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoomController;
+use App\Models\Room;
 
 
 route::get("/", [AdminController::class,"home"]);
@@ -58,4 +60,4 @@ route::get('/hotel_contact', [HomeController::class,'hotel_contact']);
 
 route::get('/search', [AdminController::class,'search']);
 
-Route::get('/grpc-room/{id}', [App\Http\Controllers\RoomController::class, 'grpcRoom']);
+Route::get('/grpc-room/{id}', [RoomController::class, 'grpcRoom']);

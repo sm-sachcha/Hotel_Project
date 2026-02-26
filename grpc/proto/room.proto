@@ -13,5 +13,5 @@ message RoomResponse {
 }
 
 service RoomService {
-  rpc GetRoom (RoomRequest) returns (RoomResponse);
+  rpc GetRoom(RoomRequest) returns (RoomResponse);
 }

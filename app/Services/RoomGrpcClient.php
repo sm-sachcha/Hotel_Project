@@ -2,35 +2,34 @@
 
 namespace App\Services;
 
-use Room\RoomServiceClient;
-use Room\RoomRequest;
-use Grpc\ChannelCredentials;
+use App\Models\Room;
 
 class RoomGrpcClient
 {
-    protected $client;
-
-    public function __construct()
-    {
-        // Use fully qualified class name to avoid "ChannelCredentials" errors
-        $this->client = new RoomServiceClient(
-            'localhost:50051',
-            ['credentials' => \Grpc\ChannelCredentials::createInsecure()]
-        );
-    }
-
     public function getRoom($id)
     {
-        $request = new RoomRequest();
-        $request->setId($id);
+        $room = Room::find($id);
 
-        // Call gRPC method
-        list($response, $status) = $this->client->GetRoom($request)->wait();
-
-        if ($status->code !== 0) {
-            throw new \Exception("gRPC Error: " . $status->details);
+        if (!$room) {
+            return [
+                'id' => 0,
+                'title' => '',
+                'description' => '',
+                'price' => '',
+                'wifi' => '',
+                'room_type' => '',
+                'image' => ''
+            ];
         }
 
-        return $response;
+        return [
+            'id' => $room->id,
+            'title' => $room->room_title,
+            'description' => $room->description,
+            'price' => $room->price,
+            'wifi' => $room->wifi,
+            'room_type' => $room->room_type,
+            'image' => $room->image
+        ];
     }
 }
