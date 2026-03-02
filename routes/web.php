@@ -61,11 +61,11 @@ route::get('/hotel_contact', [HomeController::class,'hotel_contact']);
 route::get('/search', [AdminController::class,'search']);
 
 Route::get('/api/rooms', function () {
-    $rooms = \App\Models\Room::all()->toArray();
+    $rooms = Room::select('room_title', 'description', 'price', 'wifi', 'room_type')->get();
 
-    foreach ($rooms as &$room) {
-        $room['image_url'] = asset('storage/room/' . $room['image']);
-    }
+    // foreach ($rooms as $room) {
+    //     $room->image_url = asset('storage/room/' . $room->image);
+    // }
 
     return response()->json($rooms);
 });
