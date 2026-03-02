@@ -9,7 +9,11 @@ message RoomRequest {
 message RoomResponse {
   int32 id = 1;
   string title = 2;
-  string price = 3;
+  string description = 3;
+  string price = 4;
+  string wifi = 5;
+  string room_type = 6;
+  string image = 7;
 }
 
 service RoomService {

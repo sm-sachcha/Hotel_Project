@@ -21,7 +21,6 @@ class RoomGrpcClient
                 'image' => ''
             ];
         }
-
         return [
             'id' => $room->id,
             'title' => $room->room_title,

@@ -12,7 +12,7 @@ route::get('/home', [AdminController::class,'index'])->name('home');
 
 route::get('/create_room', [AdminController::class,'create_room'])->middleware((['auth','admin']));
 
-route::post('/add_room', [AdminController::class,'add_room'])->middleware((['auth','admin']));;
+route::post('/add_room', [AdminController::class,'add_room'])->middleware((['auth','admin']));
 
 route::get('/view_room', [AdminController::class,'view_room'])->middleware((['auth','admin']));
 
@@ -60,4 +60,12 @@ route::get('/hotel_contact', [HomeController::class,'hotel_contact']);
 
 route::get('/search', [AdminController::class,'search']);
 
-Route::get('/grpc-room/{id}', [RoomController::class, 'grpcRoom']);
+Route::get('/api/rooms', function () {
+    $rooms = \App\Models\Room::all()->toArray();
+
+    foreach ($rooms as &$room) {
+        $room['image_url'] = asset('storage/room/' . $room['image']);
+    }
+
+    return response()->json($rooms);
+});
