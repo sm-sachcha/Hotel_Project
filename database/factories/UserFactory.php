@@ -14,6 +14,7 @@ use Laravel\Jetstream\Features;
  */
 class UserFactory extends Factory
 {
+    protected $model = User::class;
     /**
      * The current password being used by the factory.
      */
@@ -36,6 +37,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'usertype' => 'user', // ⭐ ADD THIS LINE
         ];
     }
 

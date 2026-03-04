@@ -15,4 +15,10 @@ class Room extends Model
         'room_type',
         'image'
     ];
+
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\RoomFactory::new();
+    }
 }

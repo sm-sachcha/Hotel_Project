@@ -28,6 +28,7 @@
     "psr-4": {
         "App\\": "app/",
         "Room\\": "grpc/generated/Room/",
+        "User\\": "grpc/generated/User/",
         "GPBMetadata\\": "grpc/generated/GPBMetadata/"
     }
     },

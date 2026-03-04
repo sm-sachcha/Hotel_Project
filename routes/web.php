@@ -1,4 +1,5 @@
 <?php
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
@@ -66,6 +67,16 @@ Route::get('/api/rooms', function () {
     // foreach ($rooms as $room) {
     //     $room->image_url = asset('storage/room/' . $room->image);
     // }
-
     return response()->json($rooms);
+});
+
+
+// Route::get('/api/user/{id}', [Grpc_UserController::class, 'grpcUser']);
+
+Route::get('/api/users', function () {
+    $users = User::where('usertype', 'user')
+    ->select('id', 'name', 'email', 'phone')
+    ->get();
+
+    return response()->json($users);
 });
