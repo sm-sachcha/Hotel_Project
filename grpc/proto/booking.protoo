@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package booking;
+
+service BookingService {
+  rpc GetBooking (BookingRequest) returns (BookingResponse);
+  rpc CreateBooking (CreateBookingRequest) returns (BookingResponse);
+}
+
+message BookingRequest {
+  int32 id = 1;
+}
+
+message CreateBookingRequest {
+  int32 room_id = 1;
+  string customer_name = 2;
+}
+
+message BookingResponse {
+  int32 id = 1;
+  int32 room_id = 2;
+  string customer_name = 3;
+}
+
+
